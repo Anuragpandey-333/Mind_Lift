@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -6,6 +6,12 @@ const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({ email: '', password: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
+
+  useEffect(() => {
+    const theme = localStorage.getItem('theme')
+    setIsToggled(theme === 'dark')
+  }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -24,25 +30,49 @@ const Login = ({ setIsAuthenticated }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md border border-white/20">
+    <div className={`min-h-screen flex items-center justify-center p-4 transition-all duration-700 ${
+      isToggled 
+        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' 
+        : 'bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-100'
+    }`}>
+      <div className={`backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md border transition-all duration-500 ${
+        isToggled 
+          ? 'bg-slate-800/80 border-purple-500/20' 
+          : 'bg-white/80 border-white/20'
+      }`}>
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-4">
+          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 transition-all duration-500 ${
+            isToggled 
+              ? 'bg-gradient-to-r from-purple-600 to-pink-600' 
+              : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+          }`}>
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">MindLift</h1>
-          <p className="text-gray-600">Welcome back to your wellness journey</p>
+          <h1 className={`text-4xl font-bold bg-clip-text text-transparent mb-2 transition-all duration-500 ${
+            isToggled 
+              ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
+              : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+          }`}>MindLift</h1>
+          <p className={`transition-all duration-500 ${
+            isToggled ? 'text-gray-300' : 'text-gray-600'
+          }`}>Welcome back to your wellness journey</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-700">Email Address</label>
+            <label className={`block text-sm font-semibold transition-all duration-300 ${
+              isToggled ? 'text-gray-300' : 'text-gray-700'
+            }`}>Email Address</label>
             <input
               type="email"
               required
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50/50"
+              className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                isToggled 
+                  ? 'border-purple-500/30 focus:ring-purple-500 bg-slate-700/50 text-white placeholder-gray-400' 
+                  : 'border-gray-200 focus:ring-emerald-500 bg-gray-50/50 text-gray-900 placeholder-gray-500'
+              }`}
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -50,11 +80,17 @@ const Login = ({ setIsAuthenticated }) => {
           </div>
 
           <div className="space-y-2">
-            <label className="block text-sm font-semibold text-gray-700">Password</label>
+            <label className={`block text-sm font-semibold transition-all duration-300 ${
+              isToggled ? 'text-gray-300' : 'text-gray-700'
+            }`}>Password</label>
             <input
               type="password"
               required
-              className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 bg-gray-50/50"
+              className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                isToggled 
+                  ? 'border-purple-500/30 focus:ring-purple-500 bg-slate-700/50 text-white placeholder-gray-400' 
+                  : 'border-gray-200 focus:ring-emerald-500 bg-gray-50/50 text-gray-900 placeholder-gray-500'
+              }`}
               placeholder="Enter your password"
               value={formData.password}
               onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -70,7 +106,11 @@ const Login = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-xl font-semibold hover:from-purple-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg"
+            className={`w-full text-white py-3 px-4 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
+              isToggled 
+                ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700'
+            }`}
           >
             {loading ? (
               <div className="flex items-center justify-center">
@@ -87,9 +127,15 @@ const Login = ({ setIsAuthenticated }) => {
         </form>
 
         <div className="mt-8 text-center">
-          <p className="text-gray-600">
+          <p className={`transition-all duration-300 ${
+            isToggled ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Don't have an account?{' '}
-            <Link to="/signup" className="font-semibold text-purple-600 hover:text-purple-700 transition-colors">
+            <Link to="/signup" className={`font-semibold transition-colors ${
+              isToggled 
+                ? 'text-purple-400 hover:text-purple-300' 
+                : 'text-emerald-600 hover:text-emerald-700'
+            }`}>
               Sign up
             </Link>
           </p>

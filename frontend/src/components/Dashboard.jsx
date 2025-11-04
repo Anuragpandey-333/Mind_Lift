@@ -1,14 +1,25 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = ({ setIsAuthenticated }) => {
+  const navigate = useNavigate()
   const [user, setUser] = useState(null)
+  const [isToggled, setIsToggled] = useState(false)
 
   useEffect(() => {
     const userData = localStorage.getItem('user')
+    const theme = localStorage.getItem('theme')
     if (userData) {
       setUser(JSON.parse(userData))
     }
+    setIsToggled(theme === 'dark')
   }, [])
+
+  const toggleTheme = () => {
+    const newTheme = !isToggled
+    setIsToggled(newTheme)
+    localStorage.setItem('theme', newTheme ? 'dark' : 'light')
+  }
 
   const handleLogout = () => {
     localStorage.removeItem('token')
@@ -69,8 +80,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
       ),
       title: "Scheduler",
       description: "Organize tasks and manage your daily routine",
-      color: "from-purple-500 to-violet-500",
-      bgColor: "bg-purple-50"
+      color: "from-violet-500 to-purple-500",
+      bgColor: "bg-violet-50"
     },
     {
       icon: (
@@ -86,26 +97,77 @@ const Dashboard = ({ setIsAuthenticated }) => {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100">
+    <div className={`min-h-screen transition-all duration-700 ${
+      isToggled 
+        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' 
+        : 'bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-100'
+    }`}>
       {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm shadow-lg border-b border-white/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      <nav className={`backdrop-blur-md shadow-sm border-b transition-all duration-500 ${
+        isToggled 
+          ? 'bg-slate-800/80 border-purple-500/30' 
+          : 'bg-white/70 border-emerald-100/50'
+      }`}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-3">
+              <button 
+                onClick={toggleTheme}
+                className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br rounded-2xl shadow-lg transition-all duration-500 transform hover:scale-110 ${
+                  isToggled 
+                    ? 'from-purple-400 to-pink-500 rotate-180' 
+                    : 'from-emerald-400 to-teal-500 rotate-0'
+                }`}
+              >
+                <svg className={`w-7 h-7 text-white transition-all duration-500 ${
+                  isToggled ? 'rotate-45 scale-110' : 'rotate-0 scale-100'
+                }`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
-              </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">MindLift</h1>
+              </button>
+              <button 
+                onClick={() => navigate('/')}
+                className={`text-3xl font-light bg-clip-text text-transparent tracking-wide transition-all duration-500 hover:opacity-80 ${
+                  isToggled 
+                    ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400' 
+                    : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600'
+                }`}
+              >
+                MindLift
+              </button>
             </div>
+            
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#features" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                isToggled 
+                  ? 'text-gray-300 hover:text-purple-400' 
+                  : 'text-gray-600 hover:text-emerald-600'
+              }`}>Features</a>
+              <a href="#about" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                isToggled 
+                  ? 'text-gray-300 hover:text-purple-400' 
+                  : 'text-gray-600 hover:text-emerald-600'
+              }`}>About</a>
+              <a href="#contact" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                isToggled 
+                  ? 'text-gray-300 hover:text-purple-400' 
+                  : 'text-gray-600 hover:text-emerald-600'
+              }`}>Contact</a>
+            </div>
+            
             <div className="flex items-center space-x-4">
               {user && (
-                <span className="text-gray-700 font-medium">Welcome, {user.name}!</span>
+                <span className={`font-medium transition-all duration-300 ${
+                  isToggled ? 'text-gray-300' : 'text-gray-700'
+                }`}>Welcome, {user.name}!</span>
               )}
               <button
                 onClick={handleLogout}
-                className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition-all duration-200 font-medium shadow-lg"
+                className={`text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
+                  isToggled 
+                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600' 
+                    : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600'
+                }`}
               >
                 Logout
               </button>
@@ -118,13 +180,21 @@ const Dashboard = ({ setIsAuthenticated }) => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+          <h2 className={`text-5xl font-bold mb-6 transition-all duration-500 ${
+            isToggled ? 'text-white' : 'text-gray-900'
+          }`}>
             Welcome to Your
-            <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
+            <span className={`block bg-clip-text text-transparent transition-all duration-500 ${
+              isToggled 
+                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+            }`}>
               Wellness Dashboard
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className={`text-xl max-w-3xl mx-auto transition-all duration-500 ${
+            isToggled ? 'text-gray-300' : 'text-gray-600'
+          }`}>
             Your comprehensive platform for mental wellness, productivity, and personal growth. 
             Take control of your well-being with our integrated tools and AI-powered insights.
           </p>
@@ -143,7 +213,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
               <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
               <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               <div className="mt-6">
-                <span className="inline-flex items-center text-purple-600 font-semibold group-hover:text-purple-700 transition-colors">
+                <span className="inline-flex items-center text-emerald-600 font-semibold group-hover:text-emerald-700 transition-colors">
                   Get Started
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -159,15 +229,15 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">Your Wellness Journey</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">0</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
               <div className="text-gray-600">Days Active</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">0</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
               <div className="text-gray-600">Mood Entries</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent mb-2">0</div>
+              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
               <div className="text-gray-600">Goals Achieved</div>
             </div>
           </div>

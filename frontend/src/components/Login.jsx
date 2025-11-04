@@ -21,6 +21,7 @@ const Login = ({ setIsAuthenticated }) => {
     try {
       const response = await axios.post('http://localhost:5001/api/auth/login', formData)
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('user', JSON.stringify(response.data.user))
       setIsAuthenticated(true)
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed')
@@ -50,12 +51,12 @@ const Login = ({ setIsAuthenticated }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
             </svg>
           </div>
-          <h1 className={`text-4xl font-bold bg-clip-text text-transparent mb-2 transition-all duration-500 ${
+          <h1 className={`text-4xl font-bold tracking-tight bg-clip-text text-transparent mb-2 transition-all duration-500 ${
             isToggled 
               ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
               : 'bg-gradient-to-r from-emerald-600 to-teal-600'
           }`}>MindLift</h1>
-          <p className={`transition-all duration-500 ${
+          <p className={`font-medium tracking-wide transition-all duration-500 ${
             isToggled ? 'text-gray-300' : 'text-gray-600'
           }`}>Welcome back to your wellness journey</p>
         </div>
@@ -106,7 +107,7 @@ const Login = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full text-white py-3 px-4 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
+            className={`w-full text-white py-3 px-4 rounded-xl font-semibold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
               isToggled 
                 ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
                 : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700'
@@ -127,11 +128,11 @@ const Login = ({ setIsAuthenticated }) => {
         </form>
 
         <div className="mt-8 text-center">
-          <p className={`transition-all duration-300 ${
+          <p className={`font-medium tracking-wide transition-all duration-300 ${
             isToggled ? 'text-gray-300' : 'text-gray-600'
           }`}>
             Don't have an account?{' '}
-            <Link to="/signup" className={`font-semibold transition-colors ${
+            <Link to="/signup" className={`font-semibold tracking-wide transition-colors ${
               isToggled 
                 ? 'text-purple-400 hover:text-purple-300' 
                 : 'text-emerald-600 hover:text-emerald-700'

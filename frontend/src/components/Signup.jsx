@@ -36,6 +36,7 @@ const Signup = ({ setIsAuthenticated }) => {
         password: formData.password
       })
       localStorage.setItem('token', response.data.token)
+      localStorage.setItem('user', JSON.stringify(response.data.user))
       setIsAuthenticated(true)
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed')
@@ -65,12 +66,12 @@ const Signup = ({ setIsAuthenticated }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
             </svg>
           </div>
-          <h1 className={`text-4xl font-bold bg-clip-text text-transparent mb-2 transition-all duration-500 ${
+          <h1 className={`text-4xl font-bold tracking-tight bg-clip-text text-transparent mb-2 transition-all duration-500 ${
             isToggled 
               ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
               : 'bg-gradient-to-r from-emerald-600 to-teal-600'
           }`}>MindLift</h1>
-          <p className={`transition-all duration-500 ${
+          <p className={`font-medium tracking-wide transition-all duration-500 ${
             isToggled ? 'text-gray-300' : 'text-gray-600'
           }`}>Start your wellness journey today</p>
         </div>
@@ -158,7 +159,7 @@ const Signup = ({ setIsAuthenticated }) => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full text-white py-3 px-4 rounded-xl font-semibold disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
+            className={`w-full text-white py-3 px-4 rounded-xl font-semibold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
               isToggled 
                 ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
                 : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700'
@@ -179,11 +180,11 @@ const Signup = ({ setIsAuthenticated }) => {
         </form>
 
         <div className="mt-8 text-center">
-          <p className={`transition-all duration-300 ${
+          <p className={`font-medium tracking-wide transition-all duration-300 ${
             isToggled ? 'text-gray-300' : 'text-gray-600'
           }`}>
             Already have an account?{' '}
-            <Link to="/login" className={`font-semibold transition-colors ${
+            <Link to="/login" className={`font-semibold tracking-wide transition-colors ${
               isToggled 
                 ? 'text-purple-400 hover:text-purple-300' 
                 : 'text-emerald-600 hover:text-emerald-700'

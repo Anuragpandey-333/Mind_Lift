@@ -5,12 +5,16 @@ const Landing = () => {
   const navigate = useNavigate();
   const [isToggled, setIsToggled] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const theme = localStorage.getItem('theme');
     setIsAuthenticated(!!token);
     setIsToggled(theme === 'dark');
+    
+    // Replace current history entry to prevent back navigation
+    window.history.replaceState(null, '', window.location.pathname);
   }, []);
 
   const toggleTheme = () => {
@@ -20,11 +24,12 @@ const Landing = () => {
   };
   return (
     <div
-      className={`min-h-screen transition-all duration-700 relative ${
-        isToggled 
-          ? 'bg-[url(\'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920\')] bg-cover bg-center bg-no-repeat' 
-          : 'bg-[url(\'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920\')] bg-cover bg-center bg-no-repeat'
-      }`}
+      className="min-h-screen transition-all duration-700 relative bg-cover bg-center bg-no-repeat"
+      style={{
+        backgroundImage: isToggled 
+          ? 'url(https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1920)' 
+          : 'url(https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920)'
+      }}
     >
       {/* Overlay gradient for readability */}
       <div className={`absolute inset-0 transition-all duration-700 ${
@@ -57,7 +62,7 @@ const Landing = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </button>
-                <h1 className={`text-3xl font-light bg-clip-text text-transparent tracking-wide transition-all duration-500 ${
+                <h1 className={`text-2xl sm:text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 ${
                   isToggled 
                     ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400' 
                     : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600'
@@ -65,24 +70,38 @@ const Landing = () => {
               </div>
               
               <div className="hidden md:flex items-center space-x-8">
-                <a href="#features" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                   isToggled 
                     ? 'text-gray-300 hover:text-purple-400' 
                     : 'text-gray-600 hover:text-emerald-600'
                 }`}>Features</a>
-                <a href="#about" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                   isToggled 
                     ? 'text-gray-300 hover:text-purple-400' 
                     : 'text-gray-600 hover:text-emerald-600'
                 }`}>About</a>
-                <a href="#contact" className={`font-medium transition-all duration-300 hover:scale-105 ${
+                <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                   isToggled 
                     ? 'text-gray-300 hover:text-purple-400' 
                     : 'text-gray-600 hover:text-emerald-600'
                 }`}>Contact</a>
               </div>
               
-              <div className="flex items-center space-x-4">
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={`md:hidden p-2 rounded-lg transition-colors ${
+                  isToggled 
+                    ? 'text-gray-300 hover:bg-purple-900/30' 
+                    : 'text-gray-600 hover:bg-gray-100'
+                }`}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+              
+              <div className="hidden md:flex items-center space-x-4">
                 {isAuthenticated ? (
                   <button
                     onClick={() => navigate('/dashboard')}
@@ -98,7 +117,7 @@ const Landing = () => {
                   <>
                     <button
                       onClick={() => navigate('/login')}
-                      className={`font-medium transition-all duration-300 px-4 py-2 rounded-full ${
+                      className={`font-semibold text-sm tracking-wide transition-all duration-300 px-4 py-2 rounded-full ${
                         isToggled 
                           ? 'text-gray-300 hover:text-purple-400 hover:bg-purple-900/30' 
                           : 'text-gray-600 hover:text-emerald-600 hover:bg-emerald-50'
@@ -108,25 +127,90 @@ const Landing = () => {
                     </button>
                     <button
                       onClick={() => navigate('/signup')}
-                      className={`text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
+                      className={`text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold tracking-wide shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
                         isToggled 
                           ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600' 
                           : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600'
                       }`}
                     >
-                      Start Learning
+                      🚀 Start Learning
                     </button>
                   </>
                 )}
               </div>
             </div>
           </div>
+          
+          {/* Mobile menu */}
+          {isMobileMenuOpen && (
+            <div className={`md:hidden border-t transition-all duration-300 ${
+              isToggled 
+                ? 'bg-slate-800/90 border-purple-500/30' 
+                : 'bg-white/90 border-gray-200'
+            }`}>
+              <div className="px-6 py-4 space-y-4">
+                <a href="#features" className={`block font-medium transition-colors ${
+                  isToggled 
+                    ? 'text-gray-300 hover:text-purple-400' 
+                    : 'text-gray-600 hover:text-emerald-600'
+                }`}>Features</a>
+                <a href="#about" className={`block font-medium transition-colors ${
+                  isToggled 
+                    ? 'text-gray-300 hover:text-purple-400' 
+                    : 'text-gray-600 hover:text-emerald-600'
+                }`}>About</a>
+                <a href="#contact" className={`block font-medium transition-colors ${
+                  isToggled 
+                    ? 'text-gray-300 hover:text-purple-400' 
+                    : 'text-gray-600 hover:text-emerald-600'
+                }`}>Contact</a>
+                
+                <div className="pt-4 space-y-3">
+                  {isAuthenticated ? (
+                    <button
+                      onClick={() => navigate('/dashboard')}
+                      className={`w-full text-white py-3 rounded-full font-medium shadow-md transition-all duration-300 ${
+                        isToggled 
+                          ? 'bg-gradient-to-r from-purple-500 to-pink-500' 
+                          : 'bg-gradient-to-r from-emerald-500 to-teal-500'
+                      }`}
+                    >
+                      Dashboard
+                    </button>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => navigate('/login')}
+                        className={`w-full font-medium py-3 rounded-full transition-all duration-300 ${
+                          isToggled 
+                            ? 'text-gray-300 hover:bg-purple-900/30' 
+                            : 'text-gray-600 hover:bg-gray-100'
+                        }`}
+                      >
+                        Sign In
+                      </button>
+                      <button
+                        onClick={() => navigate('/signup')}
+                        className={`w-full text-white py-3 rounded-full font-medium shadow-md transition-all duration-300 ${
+                          isToggled 
+                            ? 'bg-gradient-to-r from-purple-500 to-pink-500' 
+                            : 'bg-gradient-to-r from-emerald-500 to-teal-500'
+                        }`}
+                      >
+                        Start Learning
+                      </button>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* Hero Section (Centered Vertically) */}
         <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 -mt-16">
           <div className="max-w-4xl">
-            <h1 className={`text-5xl sm:text-6xl md:text-7xl font-bold mb-6 leading-tight transition-all duration-500 ${
+            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-all duration-500 ${
               isToggled ? 'text-white' : 'text-gray-900'
             }`}>
               Elevate Your
@@ -138,16 +222,16 @@ const Landing = () => {
                 Mental Wellness
               </span>
             </h1>
-            <p className={`text-lg sm:text-xl max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-500 ${
+            <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed transition-all duration-500 px-4 ${
               isToggled ? 'text-gray-300' : 'text-gray-700'
             }`}>
               A comprehensive platform designed for students to manage stress, track mood, 
               connect with mentors, and build healthy habits for academic and personal success.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <button
                 onClick={() => navigate('/signup')}
-                className={`text-white px-8 py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg text-lg hover:scale-105 transform ${
+                className={`text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-200 shadow-lg text-base sm:text-lg hover:scale-105 transform ${
                   isToggled 
                     ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700' 
                     : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700'
@@ -157,7 +241,7 @@ const Landing = () => {
               </button>
               <button
                 onClick={() => navigate('/login')}
-                className={`border-2 px-8 py-4 rounded-xl font-semibold transition-all duration-200 text-lg hover:scale-105 transform ${
+                className={`border-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-200 text-base sm:text-lg hover:scale-105 transform ${
                   isToggled 
                     ? 'border-purple-400 text-purple-400 hover:bg-purple-400 hover:text-white' 
                     : 'border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white'

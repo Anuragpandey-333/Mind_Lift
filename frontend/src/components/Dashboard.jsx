@@ -34,7 +34,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z" />
         </svg>
       ),
-      title: "Mood Tracker",
+      title: "😊 Mood Tracker",
       description: "Track your daily emotions and mental state",
       color: "from-pink-500 to-rose-500",
       bgColor: "bg-pink-50"
@@ -45,7 +45,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
         </svg>
       ),
-      title: "Mentorship",
+      title: "🤝 Mentorship",
       description: "Connect with verified mental health mentors",
       color: "from-blue-500 to-indigo-500",
       bgColor: "bg-blue-50"
@@ -56,7 +56,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: "Fitness Tracker",
+      title: "💪 Fitness Tracker",
       description: "Monitor your physical wellness and activities",
       color: "from-green-500 to-emerald-500",
       bgColor: "bg-green-50"
@@ -67,7 +67,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4" />
         </svg>
       ),
-      title: "Diet Planner",
+      title: "🥗 Diet Planner",
       description: "Personalized nutrition for better mental health",
       color: "from-orange-500 to-amber-500",
       bgColor: "bg-orange-50"
@@ -78,7 +78,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
-      title: "Scheduler",
+      title: "📅 Scheduler",
       description: "Organize tasks and manage your daily routine",
       color: "from-violet-500 to-purple-500",
       bgColor: "bg-violet-50"
@@ -89,7 +89,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
       ),
-      title: "AI Chatbot",
+      title: "🤖 AI Chatbot",
       description: "24/7 AI support for mental wellness guidance",
       color: "from-teal-500 to-cyan-500",
       bgColor: "bg-teal-50"
@@ -127,7 +127,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
               </button>
               <button 
                 onClick={() => navigate('/')}
-                className={`text-3xl font-light bg-clip-text text-transparent tracking-wide transition-all duration-500 hover:opacity-80 ${
+                className={`text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 hover:opacity-80 ${
                   isToggled 
                     ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400' 
                     : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600'
@@ -138,17 +138,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className={`font-medium transition-all duration-300 hover:scale-105 ${
+              <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-gray-300 hover:text-purple-400' 
                   : 'text-gray-600 hover:text-emerald-600'
               }`}>Features</a>
-              <a href="#about" className={`font-medium transition-all duration-300 hover:scale-105 ${
+              <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-gray-300 hover:text-purple-400' 
                   : 'text-gray-600 hover:text-emerald-600'
               }`}>About</a>
-              <a href="#contact" className={`font-medium transition-all duration-300 hover:scale-105 ${
+              <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-gray-300 hover:text-purple-400' 
                   : 'text-gray-600 hover:text-emerald-600'
@@ -180,23 +180,38 @@ const Dashboard = ({ setIsAuthenticated }) => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h2 className={`text-5xl font-bold mb-6 transition-all duration-500 ${
+          <h2 className={`text-4xl sm:text-5xl font-bold tracking-tight mb-4 transition-all duration-500 ${
             isToggled ? 'text-white' : 'text-gray-900'
           }`}>
-            Welcome to Your
-            <span className={`block bg-clip-text text-transparent transition-all duration-500 ${
+            👋 Welcome back, {user?.name || 'Friend'}!✨
+          </h2>
+          <div className={`text-xl sm:text-2xl font-light leading-relaxed mb-8 transition-all duration-500 ${
+            isToggled ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            <span className={`bg-clip-text text-transparent font-medium italic leading-relaxed ${
               isToggled 
                 ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
                 : 'bg-gradient-to-r from-emerald-600 to-teal-600'
             }`}>
-              Wellness Dashboard
+              "The greatest revolution of our generation is the discovery that human beings, by changing the inner attitudes of their minds, can change the outer aspects of their lives."
             </span>
-          </h2>
-          <p className={`text-xl max-w-3xl mx-auto transition-all duration-500 ${
+            <p className={`text-base mt-2 font-medium tracking-wide transition-all duration-500 ${
+              isToggled ? 'text-gray-400' : 'text-gray-500'
+            }`}>— William James</p>
+          </div>
+          <p className={`text-lg sm:text-xl max-w-4xl mx-auto font-medium leading-relaxed tracking-wide transition-all duration-500 ${
             isToggled ? 'text-gray-300' : 'text-gray-600'
           }`}>
-            Your comprehensive platform for mental wellness, productivity, and personal growth. 
-            Take control of your well-being with our integrated tools and AI-powered insights.
+            Your <span className={`font-semibold bg-clip-text text-transparent ${
+              isToggled 
+                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+            }`}>comprehensive platform</span> for mental wellness, productivity, and personal growth. 
+            Take control of your well-being with our <span className={`font-semibold bg-clip-text text-transparent ${
+              isToggled 
+                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
+            }`}>integrated tools</span> and AI-powered insights.
           </p>
         </div>
 
@@ -210,10 +225,10 @@ const Dashboard = ({ setIsAuthenticated }) => {
               <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${feature.color} rounded-xl text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
                 {feature.icon}
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+              <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed font-medium">{feature.description}</p>
               <div className="mt-6">
-                <span className="inline-flex items-center text-emerald-600 font-semibold group-hover:text-emerald-700 transition-colors">
+                <span className="inline-flex items-center text-emerald-600 font-semibold tracking-wide group-hover:text-emerald-700 transition-colors">
                   Get Started
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

@@ -20,6 +20,13 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes)
 
 const PORT = process.env.PORT || 5001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
+}
+
+// Export for Vercel
+module.exports = app

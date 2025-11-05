@@ -11,6 +11,9 @@ router.post('/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body
 
+    // Test database connection
+    await prisma.$connect()
+
     // Check if user exists
     const existingUser = await prisma.user.findUnique({ where: { email } })
     if (existingUser) {
@@ -51,6 +54,9 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body
+
+    // Test database connection
+    await prisma.$connect()
 
     // Find user
     const user = await prisma.user.findUnique({ where: { email } })

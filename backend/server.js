@@ -17,6 +17,18 @@ app.use(express.json())
 app.get('/', (req, res) => {
   res.send('Welcome to the API')
 })
+
+app.get('/api/health', async (req, res) => {
+  try {
+    const prisma = require('./lib/prisma')
+    await prisma.$connect()
+    await prisma.$disconnect()
+    res.json({ status: 'OK', database: 'Connected' })
+  } catch (error) {
+    res.status(500).json({ status: 'Error', database: 'Disconnected', error: error.message })
+  }
+})
+
 app.use('/api/auth', authRoutes)
 
 const PORT = process.env.PORT || 5001

@@ -13,14 +13,13 @@ const Landing = () => {
     setIsAuthenticated(!!token);
     setIsToggled(theme === 'dark');
     
-    // Replace current history entry to prevent back navigation
     window.history.replaceState(null, '', window.location.pathname);
   }, []);
 
   const toggleTheme = () => {
     const newTheme = !isToggled;
     setIsToggled(newTheme);
-    localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+    localStorage.setItem('theme', newTheme ? 'brown' : 'light');
   };
   return (
     <div
@@ -31,15 +30,15 @@ const Landing = () => {
           : 'url(https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920)'
       }}
     >
-      {/* Overlay gradient for readability */}
+      {}
       <div className={`absolute inset-0 transition-all duration-700 ${
         isToggled 
-          ? 'bg-gradient-to-br from-slate-900/90 via-purple-900/85 to-slate-900/90' 
+          ? 'bg-gradient-to-br from-neutral-900/90 via-gray-800/80 to-neutral-700/90' 
           : 'bg-gradient-to-br from-emerald-50/90 via-teal-50/80 to-cyan-100/90'
       }`}></div>
 
       <div className="relative z-10">
-        {/* Navigation */}
+        {}
         <nav className={`backdrop-blur-md shadow-sm border-b transition-all duration-500 ${
           isToggled 
             ? 'bg-slate-800/80 border-purple-500/30' 
@@ -87,7 +86,7 @@ const Landing = () => {
                 }`}>Contact</a>
               </div>
               
-              {/* Mobile menu button */}
+              {}
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={`md:hidden p-2 rounded-lg transition-colors ${
@@ -141,7 +140,7 @@ const Landing = () => {
             </div>
           </div>
           
-          {/* Mobile menu */}
+          {}
           {isMobileMenuOpen && (
             <div className={`md:hidden border-t transition-all duration-300 ${
               isToggled 
@@ -207,7 +206,7 @@ const Landing = () => {
           )}
         </nav>
 
-        {/* Hero Section (Centered Vertically) */}
+        {}
         <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 -mt-16">
           <div className="max-w-4xl">
             <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-all duration-500 ${
@@ -253,7 +252,7 @@ const Landing = () => {
           </div>
         </div>
 
-        {/* Features Grid (Below the fold) */}
+        {}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className={`backdrop-blur-sm p-8 rounded-2xl shadow-xl border hover:-translate-y-2 transition-all duration-300 ${

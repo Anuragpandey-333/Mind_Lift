@@ -5,15 +5,28 @@ const Dashboard = ({ setIsAuthenticated }) => {
   const navigate = useNavigate()
   const [user, setUser] = useState(null)
   const [isToggled, setIsToggled] = useState(false)
+  const [isNewUser, setIsNewUser] = useState(false)
 
   useEffect(() => {
     const userData = localStorage.getItem('user')
     const theme = localStorage.getItem('theme')
+    const newUserFlag = localStorage.getItem('isNewUser')
     if (userData) {
       setUser(JSON.parse(userData))
     }
     setIsToggled(theme === 'dark')
+    setIsNewUser(newUserFlag === 'true')
   }, [])
+
+  useEffect(() => {
+    // Clear the flag after component has rendered with the message
+    if (isNewUser) {
+      const timer = setTimeout(() => {
+        localStorage.removeItem('isNewUser')
+      }, 100)
+      return () => clearTimeout(timer)
+    }
+  }, [isNewUser])
 
   const toggleTheme = () => {
     const newTheme = !isToggled
@@ -29,69 +42,69 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
   const features = [
     {
+      title: "Mood Tracker",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.5a2.5 2.5 0 110 5H9V10z" />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
         </svg>
       ),
-      title: "😊 Mood Tracker",
       description: "Track your daily emotions and mental state",
-      color: "from-pink-500 to-rose-500",
+      color: "#FCD8CD",
       bgColor: "bg-pink-50"
     },
     {
+      title: "Mentorship",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
         </svg>
       ),
-      title: "🤝 Mentorship",
       description: "Connect with verified mental health mentors",
-      color: "from-blue-500 to-indigo-500",
+      color: "#FEEBF6",
       bgColor: "bg-blue-50"
     },
     {
+      title: "Fitness Tracker",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       ),
-      title: "💪 Fitness Tracker",
       description: "Monitor your physical wellness and activities",
-      color: "from-green-500 to-emerald-500",
+      color: "#EBD6FB",
       bgColor: "bg-green-50"
     },
     {
+      title: "Diet Planner",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4" />
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17M17 13v4a2 2 0 01-2 2H9a2 2 0 01-2-2v-4m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
         </svg>
       ),
-      title: "🥗 Diet Planner",
       description: "Personalized nutrition for better mental health",
-      color: "from-orange-500 to-amber-500",
+      color: "#687FE5",
       bgColor: "bg-orange-50"
     },
     {
+      title: "Scheduler",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
       ),
-      title: "📅 Scheduler",
       description: "Organize tasks and manage your daily routine",
-      color: "from-violet-500 to-purple-500",
+      color: "#FCD8CD",
       bgColor: "bg-violet-50"
     },
     {
+      title: "AI Chatbot",
       icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
       ),
-      title: "🤖 AI Chatbot",
       description: "24/7 AI support for mental wellness guidance",
-      color: "from-teal-500 to-cyan-500",
+      color: "#FEEBF6",
       bgColor: "bg-teal-50"
     }
   ]
@@ -99,14 +112,14 @@ const Dashboard = ({ setIsAuthenticated }) => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900' 
-        : 'bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-100'
+        ? 'bg-gradient-to-br from-[#1A2A4F] via-[#F7A5A5] to-[#FFDBB6]' 
+        : 'bg-gradient-to-br from-[#FCD8CD] via-[#FEEBF6] to-[#EBD6FB]'
     }`}>
       {/* Navigation */}
       <nav className={`backdrop-blur-md shadow-sm border-b transition-all duration-500 ${
         isToggled 
-          ? 'bg-slate-800/80 border-purple-500/30' 
-          : 'bg-white/70 border-emerald-100/50'
+          ? 'bg-[#1A2A4F]/90 border-[#F7A5A5]/30' 
+          : 'bg-white/80 border-[#687FE5]/20'
       }`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
@@ -115,8 +128,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={toggleTheme}
                 className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br rounded-2xl shadow-lg transition-all duration-500 transform hover:scale-110 ${
                   isToggled 
-                    ? 'from-purple-400 to-pink-500 rotate-180' 
-                    : 'from-emerald-400 to-teal-500 rotate-0'
+                    ? 'from-[#F7A5A5] to-[#FFDBB6] rotate-180' 
+                    : 'from-[#687FE5] to-[#687FE5] rotate-0'
                 }`}
               >
                 <svg className={`w-7 h-7 text-white transition-all duration-500 ${
@@ -129,8 +142,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={() => navigate('/')}
                 className={`text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 hover:opacity-80 ${
                   isToggled 
-                    ? 'bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400' 
-                    : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600'
+                    ? 'bg-gradient-to-r from-[#F7A5A5] via-[#FFDBB6] to-[#F7A5A5]' 
+                    : 'bg-gradient-to-r from-[#687FE5] via-[#687FE5] to-[#687FE5]'
                 }`}
               >
                 MindLift
@@ -140,37 +153,53 @@ const Dashboard = ({ setIsAuthenticated }) => {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-gray-300 hover:text-purple-400' 
-                  : 'text-gray-600 hover:text-emerald-600'
+                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
+                  : 'text-gray-600 hover:text-[#687FE5]'
               }`}>Features</a>
               <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-gray-300 hover:text-purple-400' 
-                  : 'text-gray-600 hover:text-emerald-600'
+                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
+                  : 'text-gray-600 hover:text-[#687FE5]'
               }`}>About</a>
               <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-gray-300 hover:text-purple-400' 
-                  : 'text-gray-600 hover:text-emerald-600'
+                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
+                  : 'text-gray-600 hover:text-[#687FE5]'
               }`}>Contact</a>
             </div>
             
             <div className="flex items-center space-x-4">
               {user && (
-                <span className={`font-medium transition-all duration-300 ${
-                  isToggled ? 'text-gray-300' : 'text-gray-700'
-                }`}>Welcome, {user.name}!</span>
+                <div className="flex items-center space-x-3">
+                  <div className={`flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300 ${
+                    isToggled ? 'bg-[#F7A5A5]/20' : 'bg-[#687FE5]/10'
+                  }`}>
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-white ${
+                      isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                    }`}>
+                      {user.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="hidden md:block">
+                      <p className={`font-semibold text-sm ${
+                        isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+                      }`}>{user.name}</p>
+                      <p className={`text-xs ${
+                        isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                      }`}>{user.email}</p>
+                    </div>
+                  </div>
+                  <button
+                    onClick={handleLogout}
+                    className={`text-white px-4 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
+                      isToggled 
+                        ? 'bg-[#F7A5A5] hover:bg-[#F7A5A5]/90' 
+                        : 'bg-[#687FE5] hover:bg-[#687FE5]/90'
+                    }`}
+                  >
+                    Logout
+                  </button>
+                </div>
               )}
-              <button
-                onClick={handleLogout}
-                className={`text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
-                  isToggled 
-                    ? 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600' 
-                    : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600'
-                }`}
-              >
-                Logout
-              </button>
             </div>
           </div>
         </div>
@@ -179,81 +208,137 @@ const Dashboard = ({ setIsAuthenticated }) => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h2 className={`text-4xl sm:text-5xl font-bold tracking-tight mb-4 transition-all duration-500 ${
-            isToggled ? 'text-white' : 'text-gray-900'
+        <div className="text-center mb-12">
+          <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 text-2xl font-bold text-white ${
+            isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
           }`}>
-            👋 Welcome back, {user?.name || 'Friend'}!✨
-          </h2>
-          <div className={`text-xl sm:text-2xl font-light leading-relaxed mb-8 transition-all duration-500 ${
-            isToggled ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            <span className={`bg-clip-text text-transparent font-medium italic leading-relaxed ${
-              isToggled 
-                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
-                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
-            }`}>
-              "The greatest revolution of our generation is the discovery that human beings, by changing the inner attitudes of their minds, can change the outer aspects of their lives."
-            </span>
-            <p className={`text-base mt-2 font-medium tracking-wide transition-all duration-500 ${
-              isToggled ? 'text-gray-400' : 'text-gray-500'
-            }`}>— William James</p>
+            {user?.name?.charAt(0).toUpperCase() || 'U'}
           </div>
-          <p className={`text-lg sm:text-xl max-w-4xl mx-auto font-medium leading-relaxed tracking-wide transition-all duration-500 ${
-            isToggled ? 'text-gray-300' : 'text-gray-600'
+          <h2 className={`text-3xl sm:text-4xl font-bold tracking-tight mb-4 transition-all duration-500 ${
+            isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
           }`}>
-            Your <span className={`font-semibold bg-clip-text text-transparent ${
-              isToggled 
-                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
-                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
-            }`}>comprehensive platform</span> for mental wellness, productivity, and personal growth. 
-            Take control of your well-being with our <span className={`font-semibold bg-clip-text text-transparent ${
-              isToggled 
-                ? 'bg-gradient-to-r from-purple-400 to-pink-400' 
-                : 'bg-gradient-to-r from-emerald-600 to-teal-600'
-            }`}>integrated tools</span> and AI-powered insights.
+            {isNewUser ? 'Welcome' : 'Welcome back'}, {user?.name || 'Friend'}!
+          </h2>
+          <p className={`text-lg max-w-2xl mx-auto mb-8 transition-all duration-500 ${
+            isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+          }`}>
+            Ready to continue your wellness journey? Let's make today amazing!
           </p>
         </div>
 
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+            }`}>7</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+            }`}>Days Active</div>
+          </div>
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+            }`}>12</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+            }`}>Mood Entries</div>
+          </div>
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+            }`}>3</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+            }`}>Goals Achieved</div>
+          </div>
+        </div>
+
         {/* Feature Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h3 className={`text-2xl font-bold mb-8 text-center ${
+          isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+        }`}>Your Wellness Tools</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl border border-white/20 hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer"
+              className={`group p-6 rounded-2xl shadow-lg border hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
+                isToggled 
+                  ? 'bg-[#1A2A4F]/60 border-[#F7A5A5]/20' 
+                  : 'bg-white/90 border-gray-100'
+              }`}
             >
-              <div className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${feature.color} rounded-xl text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300 ${feature.color === '#687FE5' ? 'text-white' : 'text-gray-700'}`} style={{backgroundColor: feature.color}}>
                 {feature.icon}
               </div>
-              <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-4">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">{feature.description}</p>
-              <div className="mt-6">
-                <span className="inline-flex items-center text-emerald-600 font-semibold tracking-wide group-hover:text-emerald-700 transition-colors">
-                  Get Started
-                  <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </span>
-              </div>
+              <h3 className={`text-xl font-bold tracking-tight mb-3 ${
+                isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+              }`}>{feature.title}</h3>
+              <p className={`text-sm leading-relaxed mb-4 ${
+                isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              }`}>{feature.description}</p>
+              <button className={`text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
+                isToggled 
+                  ? 'bg-[#F7A5A5]/20 text-[#F7A5A5] hover:bg-[#F7A5A5]/30' 
+                  : 'bg-[#687FE5]/10 text-[#687FE5] hover:bg-[#687FE5]/20'
+              }`}>
+                Open Tool
+              </button>
             </div>
           ))}
         </div>
 
-        {/* Stats Section */}
-        <div className="mt-20 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-8">
-          <h3 className="text-3xl font-bold text-center text-gray-900 mb-8">Your Wellness Journey</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
-              <div className="text-gray-600">Days Active</div>
+        {/* Recent Activity */}
+        <div className={`mt-12 p-6 rounded-2xl shadow-lg ${
+          isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/90'
+        }`}>
+          <h3 className={`text-xl font-bold mb-6 ${
+            isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+          }`}>Recent Activity</h3>
+          <div className="space-y-4">
+            <div className={`flex items-center p-4 rounded-lg ${
+              isToggled ? 'bg-[#F7A5A5]/10' : 'bg-[#687FE5]/5'
+            }`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
+                isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+              }`}>
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <div>
+                <p className={`font-semibold ${
+                  isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                }`}>Mood logged: Happy</p>
+                <p className={`text-sm ${
+                  isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                }`}>2 hours ago</p>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
-              <div className="text-gray-600">Mood Entries</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-2">0</div>
-              <div className="text-gray-600">Goals Achieved</div>
+            <div className={`flex items-center p-4 rounded-lg ${
+              isToggled ? 'bg-[#F7A5A5]/10' : 'bg-[#687FE5]/5'
+            }`}>
+              <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
+                isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+              }`}>
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <div>
+                <p className={`font-semibold ${
+                  isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                }`}>Completed 30min workout</p>
+                <p className={`text-sm ${
+                  isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                }`}>Yesterday</p>
+              </div>
             </div>
           </div>
         </div>

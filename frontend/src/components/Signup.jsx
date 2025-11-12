@@ -49,19 +49,19 @@ const Signup = ({ setIsAuthenticated }) => {
   return (
     <div className={`min-h-screen flex items-center justify-center p-4 transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#1A2A4F] via-[#F7A5A5] to-[#FFDBB6]' 
-        : 'bg-gradient-to-br from-[#FCD8CD] via-[#FEEBF6] to-[#EBD6FB]'
+        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
+        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
     }`}>
       <div className={`backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md border transition-all duration-500 ${
         isToggled 
-          ? 'bg-[#1A2A4F]/90 border-[#F7A5A5]/30' 
-          : 'bg-white/90 border-[#687FE5]/20'
+          ? 'bg-[#2A2A2A]/90 border-[#8B4513]/30' 
+          : 'bg-[#F5F5DC]/90 border-[#8B4513]/20'
       }`}>
         <div className="text-center mb-8">
           <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 transition-all duration-500 ${
             isToggled 
-              ? 'bg-[#F7A5A5]' 
-              : 'bg-[#687FE5]'
+              ? 'bg-[#8B4513]' 
+              : 'bg-[#8B4513]'
           }`}>
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
@@ -69,11 +69,11 @@ const Signup = ({ setIsAuthenticated }) => {
           </div>
           <h1 className={`text-4xl font-bold tracking-tight bg-clip-text text-transparent mb-2 transition-all duration-500 ${
             isToggled 
-              ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
-              : 'bg-gradient-to-r from-[#687FE5] to-[#687FE5]'
+              ? 'bg-gradient-to-r from-[#CD853F] to-[#8B4513]' 
+              : 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]'
           }`}>MindLift</h1>
           <p className={`font-medium tracking-wide transition-all duration-500 ${
-            isToggled ? 'text-[#FFF2EF]' : 'text-gray-600'
+            isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
           }`}>Start your wellness journey today</p>
         </div>
 

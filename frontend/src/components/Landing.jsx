@@ -26,8 +26,8 @@ const Landing = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#1A2A4F] via-[#2D1B69] to-[#4C1D95]' 
-        : 'bg-gradient-to-br from-[#F8FAFC] via-[#F1F5F9] to-[#E2E8F0]'
+        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
+        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
     }`} style={{ scrollBehavior: 'smooth' }}>
       <div className="relative z-10">
         <Navbar 
@@ -37,42 +37,42 @@ const Landing = () => {
         />
 
         {/* Hero Section */}
-        <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pt-20 relative">
-          {/* Floating Elements */}
-          <div className={`absolute top-20 left-10 w-20 h-20 rounded-full opacity-20 animate-pulse ${
-            isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
-          }`}></div>
-          <div className={`absolute top-40 right-20 w-16 h-16 rounded-full opacity-30 animate-bounce ${
-            isToggled ? 'bg-[#FFDBB6]' : 'bg-[#A78BFA]'
-          }`}></div>
-          <div className={`absolute bottom-40 left-20 w-12 h-12 rounded-full opacity-25 animate-pulse ${
-            isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
-          }`}></div>
-          
-          <div className="max-w-4xl">
-            <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-8 transition-all duration-500 shadow-2xl ${
+        <div className="min-h-screen flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 pt-20 relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="./landing.png" 
+              alt="Students studying and mental wellness" 
+              className="w-full h-full object-cover"
+            />
+            <div className={`absolute inset-0 ${
               isToggled 
-                ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
-                : 'bg-gradient-to-r from-[#687FE5] to-[#A78BFA]'
+                ? 'bg-gradient-to-br from-[#1A2A4F]/80 via-[#2D1B69]/70 to-[#4C1D95]/80' 
+                : 'bg-gradient-to-br from-white/60 via-blue-50/50 to-purple-50/60'
+            }`}></div>
+          </div>
+          
+          <div className="max-w-4xl relative z-10">
+            {/* <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-8 transition-all duration-500 shadow-2xl ${
+              isToggled 
+                ? 'bg-gradient-to-r from-[#68D391] to-[#9AE6B4]' 
+                : 'bg-gradient-to-r from-[#4299E1] to-[#63B3ED]'
             }`}>
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-              </svg>
-            </div>
+            </div> */}
             <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight transition-all duration-500 ${
-              isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+              isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
             }`}>
               Elevate Your
               <span className={`block bg-clip-text text-transparent transition-all duration-500 mt-2 ${
                 isToggled 
-                  ? 'bg-gradient-to-r from-[#F7A5A5] via-[#FFDBB6] to-[#F7A5A5]' 
-                  : 'bg-gradient-to-r from-[#687FE5] via-[#A78BFA] to-[#687FE5]'
+                  ? 'bg-gradient-to-r from-[#CD853F] via-[#8B4513] to-[#CD853F]' 
+                  : 'bg-gradient-to-r from-[#8B4513] via-[#CD853F] to-[#8B4513]'
               }`}>
                 Mental Wellness
               </span>
             </h1>
             <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed transition-all duration-500 px-4 font-medium ${
-              isToggled ? 'text-[#FFF2EF]/90' : 'text-gray-600'
+              isToggled ? 'text-[#D2B48C]/90' : 'text-[#5A5A5A]'
             }`}>
               A comprehensive platform designed for students to manage stress, track mood, 
               connect with mentors, and build healthy habits for academic and personal success.
@@ -80,20 +80,20 @@ const Landing = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <button
                 onClick={() => navigate('/signup')}
-                className={`text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold transition-all duration-300 shadow-2xl text-base sm:text-lg hover:scale-105 transform hover:shadow-3xl ${
+                className={`text-white px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold transition-all duration-300 shadow-2xl text-base sm:text-lg ${
                   isToggled 
-                    ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6] hover:from-[#F7A5A5]/90 hover:to-[#FFDBB6]/90' 
-                    : 'bg-gradient-to-r from-[#687FE5] to-[#A78BFA] hover:from-[#687FE5]/90 hover:to-[#A78BFA]/90'
+                    ? 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]' 
+                    : 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]'
                 }`}
               >
                 🚀 Start Your Journey
               </button>
               <button
                 onClick={() => navigate('/login')}
-                className={`border-2 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold transition-all duration-300 text-base sm:text-lg hover:scale-105 transform backdrop-blur-sm ${
+                className={`border-2 px-8 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold transition-all duration-300 text-base sm:text-lg backdrop-blur-sm ${
                   isToggled 
-                    ? 'border-[#F7A5A5] text-[#F7A5A5] hover:bg-[#F7A5A5] hover:text-white bg-white/10' 
-                    : 'border-[#687FE5] text-[#687FE5] hover:bg-[#687FE5] hover:text-white bg-white/50'
+                    ? 'border-[#8B4513] text-[#8B4513] hover:bg-[#8B4513] hover:text-white bg-white/10' 
+                    : 'border-[#8B4513] text-[#8B4513] hover:bg-[#8B4513] hover:text-white bg-white/50'
                 }`}
               >
                 Sign In
@@ -107,56 +107,56 @@ const Landing = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className={`text-3xl sm:text-4xl font-bold mb-6 transition-all duration-500 ${
-                isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
               }`}>Supporting Student Mental Health</h2>
               <p className={`text-lg mb-6 leading-relaxed transition-all duration-500 ${
-                isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+                isToggled ? 'text-[#D2B48C]/80' : 'text-[#5A5A5A]'
               }`}>
                 Mental health challenges affect 1 in 4 students. MindLift provides evidence-based tools and resources to help students thrive academically and personally.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                    isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                    isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
                   }`}>
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className={`transition-all duration-500 ${
-                    isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+                    isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
                   }`}>24/7 Crisis Support Available</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                    isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                    isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
                   }`}>
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className={`transition-all duration-500 ${
-                    isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+                    isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
                   }`}>Licensed Mental Health Professionals</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                    isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                    isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
                   }`}>
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
                   <span className={`transition-all duration-500 ${
-                    isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+                    isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
                   }`}>Privacy-First Approach</span>
                 </div>
               </div>
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" 
-                alt="Students studying together" 
+                src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=800" 
+                alt="Mental wellness and meditation" 
                 className="rounded-2xl shadow-2xl w-full h-96 object-cover"
               />
               <div className={`absolute inset-0 rounded-2xl ${
@@ -170,23 +170,23 @@ const Landing = () => {
         <div id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative" style={{ scrollMarginTop: '80px' }}>
           <div className="text-center mb-16">
             <h2 className={`text-3xl sm:text-4xl font-bold mb-4 transition-all duration-500 ${
-              isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+              isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
             }`}>Why Choose MindLift?</h2>
             <p className={`text-lg max-w-2xl mx-auto transition-all duration-500 ${
-              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              isToggled ? 'text-[#D2B48C]/80' : 'text-[#5A5A5A]'
             }`}>Comprehensive tools designed specifically for student mental wellness</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border hover:-translate-y-3 transition-all duration-500 group ${
+            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border transition-all duration-500 ${
               isToggled 
-                ? 'bg-[#1A2A4F]/80 border-[#F7A5A5]/20 hover:border-[#F7A5A5]/40' 
-                : 'bg-white/90 border-[#687FE5]/10 hover:border-[#687FE5]/30'
+                ? 'bg-[#2D3748]/80 border-[#68D391]/20' 
+                : 'bg-white/90 border-[#4299E1]/10'
             }`}>
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
                 isToggled 
-                  ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
-                  : 'bg-gradient-to-r from-pink-500 to-rose-500'
+                  ? 'bg-gradient-to-r from-[#68D391] to-[#9AE6B4]' 
+                  : 'bg-gradient-to-r from-[#4299E1] to-[#63B3ED]'
               }`}>
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -200,12 +200,12 @@ const Landing = () => {
               }`}>Monitor your emotional well-being with daily mood logs and insights.</p>
             </div>
 
-            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border hover:-translate-y-3 transition-all duration-500 group ${
+            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border transition-all duration-500 ${
               isToggled 
-                ? 'bg-[#1A2A4F]/80 border-[#F7A5A5]/20 hover:border-[#F7A5A5]/40' 
-                : 'bg-white/90 border-[#687FE5]/10 hover:border-[#687FE5]/30'
+                ? 'bg-[#1A2A4F]/80 border-[#F7A5A5]/20' 
+                : 'bg-white/90 border-[#687FE5]/10'
             }`}>
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
                 isToggled 
                   ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
                   : 'bg-gradient-to-r from-blue-500 to-indigo-500'
@@ -222,12 +222,12 @@ const Landing = () => {
               }`}>Connect with verified mental health professionals and peer mentors.</p>
             </div>
 
-            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border hover:-translate-y-3 transition-all duration-500 group ${
+            <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border transition-all duration-500 ${
               isToggled 
-                ? 'bg-[#1A2A4F]/80 border-[#F7A5A5]/20 hover:border-[#F7A5A5]/40' 
-                : 'bg-white/90 border-[#687FE5]/10 hover:border-[#687FE5]/30'
+                ? 'bg-[#1A2A4F]/80 border-[#F7A5A5]/20' 
+                : 'bg-white/90 border-[#687FE5]/10'
             }`}>
-              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:scale-110 ${
+              <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all duration-300 ${
                 isToggled 
                   ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
                   : 'bg-gradient-to-r from-emerald-500 to-teal-500'

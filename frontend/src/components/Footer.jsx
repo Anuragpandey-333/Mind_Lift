@@ -6,8 +6,8 @@ const Footer = ({ isToggled }) => {
   return (
     <footer className={`transition-all duration-500 border-t ${
       isToggled 
-        ? 'bg-[#1A2A4F]/95 border-[#F7A5A5]/20' 
-        : 'bg-white/95 border-[#687FE5]/20'
+        ? 'bg-[#2A2A2A]/95 border-[#8B4513]/20' 
+        : 'bg-[#F5F5DC]/95 border-[#8B4513]/20'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -15,8 +15,8 @@ const Footer = ({ isToggled }) => {
             <div className="flex items-center space-x-3 mb-4">
               <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
                 isToggled 
-                  ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
-                  : 'bg-gradient-to-r from-[#687FE5] to-[#A78BFA]'
+                  ? 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]' 
+                  : 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]'
               }`}>
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -24,12 +24,12 @@ const Footer = ({ isToggled }) => {
               </div>
               <h3 className={`text-2xl font-bold bg-clip-text text-transparent ${
                 isToggled 
-                  ? 'bg-gradient-to-r from-[#F7A5A5] to-[#FFDBB6]' 
-                  : 'bg-gradient-to-r from-[#687FE5] to-[#A78BFA]'
+                  ? 'bg-gradient-to-r from-[#CD853F] to-[#8B4513]' 
+                  : 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]'
               }`}>MindLift</h3>
             </div>
             <p className={`text-sm leading-relaxed max-w-md ${
-              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              isToggled ? 'text-[#D2B48C]/80' : 'text-[#5A5A5A]'
             }`}>
               Empowering students with comprehensive mental wellness tools for academic and personal success.
             </p>
@@ -37,7 +37,7 @@ const Footer = ({ isToggled }) => {
           
           <div>
             <h4 className={`font-semibold mb-4 ${
-              isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+              isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
             }`}>Platform</h4>
             <ul className="space-y-2">
               <li><a href="#about" className={`text-sm transition-colors ${

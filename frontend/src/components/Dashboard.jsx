@@ -112,14 +112,14 @@ const Dashboard = ({ setIsAuthenticated }) => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#1A2A4F] via-[#F7A5A5] to-[#FFDBB6]' 
-        : 'bg-gradient-to-br from-[#FCD8CD] via-[#FEEBF6] to-[#EBD6FB]'
+        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
+        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
     }`}>
       {/* Navigation */}
       <nav className={`backdrop-blur-md shadow-sm border-b transition-all duration-500 ${
         isToggled 
-          ? 'bg-[#1A2A4F]/90 border-[#F7A5A5]/30' 
-          : 'bg-white/80 border-[#687FE5]/20'
+          ? 'bg-[#2A2A2A]/90 border-[#8B4513]/30' 
+          : 'bg-[#F5F5DC]/80 border-[#8B4513]/20'
       }`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
@@ -128,8 +128,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={toggleTheme}
                 className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br rounded-2xl shadow-lg transition-all duration-500 transform hover:scale-110 ${
                   isToggled 
-                    ? 'from-[#F7A5A5] to-[#FFDBB6] rotate-180' 
-                    : 'from-[#687FE5] to-[#687FE5] rotate-0'
+                    ? 'from-[#8B4513] to-[#CD853F] rotate-180' 
+                    : 'from-[#8B4513] to-[#CD853F] rotate-0'
                 }`}
               >
                 <svg className={`w-7 h-7 text-white transition-all duration-500 ${
@@ -142,8 +142,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={() => navigate('/')}
                 className={`text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 hover:opacity-80 ${
                   isToggled 
-                    ? 'bg-gradient-to-r from-[#F7A5A5] via-[#FFDBB6] to-[#F7A5A5]' 
-                    : 'bg-gradient-to-r from-[#687FE5] via-[#687FE5] to-[#687FE5]'
+                    ? 'bg-gradient-to-r from-[#CD853F] via-[#8B4513] to-[#CD853F]' 
+                    : 'bg-gradient-to-r from-[#8B4513] via-[#CD853F] to-[#8B4513]'
                 }`}
               >
                 MindLift
@@ -153,47 +153,50 @@ const Dashboard = ({ setIsAuthenticated }) => {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
-                  : 'text-gray-600 hover:text-[#687FE5]'
+                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
+                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
               }`}>Features</a>
               <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
-                  : 'text-gray-600 hover:text-[#687FE5]'
+                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
+                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
               }`}>About</a>
               <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#FFF2EF] hover:text-[#FFDBB6]' 
-                  : 'text-gray-600 hover:text-[#687FE5]'
+                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
+                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
               }`}>Contact</a>
             </div>
             
             <div className="flex items-center space-x-4">
               {user && (
                 <div className="flex items-center space-x-3">
-                  <div className={`flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300 ${
-                    isToggled ? 'bg-[#F7A5A5]/20' : 'bg-[#687FE5]/10'
-                  }`}>
+                  <button
+                    onClick={() => navigate('/profile')}
+                    className={`flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 ${
+                      isToggled ? 'bg-[#8B4513]/20 hover:bg-[#8B4513]/30' : 'bg-[#8B4513]/10 hover:bg-[#8B4513]/20'
+                    }`}
+                  >
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-white ${
-                      isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                      isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
                     }`}>
                       {user.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="hidden md:block">
                       <p className={`font-semibold text-sm ${
-                        isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+                        isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
                       }`}>{user.name}</p>
                       <p className={`text-xs ${
-                        isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                        isToggled ? 'text-[#D2B48C]/70' : 'text-[#5A5A5A]/70'
                       }`}>{user.email}</p>
                     </div>
-                  </div>
+                  </button>
                   <button
                     onClick={handleLogout}
                     className={`text-white px-4 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
                       isToggled 
-                        ? 'bg-[#F7A5A5] hover:bg-[#F7A5A5]/90' 
-                        : 'bg-[#687FE5] hover:bg-[#687FE5]/90'
+                        ? 'bg-[#8B4513] hover:bg-[#8B4513]/90' 
+                        : 'bg-[#8B4513] hover:bg-[#8B4513]/90'
                     }`}
                   >
                     Logout
@@ -210,17 +213,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 text-2xl font-bold text-white ${
-            isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+            isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
           }`}>
             {user?.name?.charAt(0).toUpperCase() || 'U'}
           </div>
           <h2 className={`text-3xl sm:text-4xl font-bold tracking-tight mb-4 transition-all duration-500 ${
-            isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+            isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
           }`}>
             {isNewUser ? 'Welcome' : 'Welcome back'}, {user?.name || 'Friend'}!
           </h2>
           <p className={`text-lg max-w-2xl mx-auto mb-8 transition-all duration-500 ${
-            isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+            isToggled ? 'text-[#D2B48C]/80' : 'text-[#5A5A5A]'
           }`}>
             Ready to continue your wellness journey? Let's make today amazing!
           </p>

@@ -112,14 +112,14 @@ const Dashboard = ({ setIsAuthenticated }) => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
-        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
+        ? 'bg-gradient-to-br from-[#000000] via-[#1a1a1a] to-[#333333]' 
+        : 'bg-gradient-to-br from-[#EFECE3] via-[#f5f2e9] to-[#e8e5dc]'
     }`}>
       {/* Navigation */}
       <nav className={`backdrop-blur-md shadow-sm border-b transition-all duration-500 ${
         isToggled 
-          ? 'bg-[#2A2A2A]/90 border-[#8B4513]/30' 
-          : 'bg-[#F5F5DC]/80 border-[#8B4513]/20'
+          ? 'bg-[#000000]/90 border-[#4A70A9]/30' 
+          : 'bg-[#EFECE3]/80 border-[#8FABD4]/20'
       }`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="flex justify-between items-center h-20">
@@ -128,8 +128,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={toggleTheme}
                 className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br rounded-2xl shadow-lg transition-all duration-500 transform hover:scale-110 ${
                   isToggled 
-                    ? 'from-[#8B4513] to-[#CD853F] rotate-180' 
-                    : 'from-[#8B4513] to-[#CD853F] rotate-0'
+                    ? 'from-[#4A70A9] to-[#8FABD4] rotate-180' 
+                    : 'from-[#8FABD4] to-[#4A70A9] rotate-0'
                 }`}
               >
                 <svg className={`w-7 h-7 text-white transition-all duration-500 ${
@@ -142,8 +142,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 onClick={() => navigate('/')}
                 className={`text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 hover:opacity-80 ${
                   isToggled 
-                    ? 'bg-gradient-to-r from-[#CD853F] via-[#8B4513] to-[#CD853F]' 
-                    : 'bg-gradient-to-r from-[#8B4513] via-[#CD853F] to-[#8B4513]'
+                    ? 'bg-gradient-to-r from-[#8FABD4] via-[#4A70A9] to-[#8FABD4]' 
+                    : 'bg-gradient-to-r from-[#4A70A9] via-[#8FABD4] to-[#4A70A9]'
                 }`}
               >
                 MindLift
@@ -153,18 +153,18 @@ const Dashboard = ({ setIsAuthenticated }) => {
             <div className="hidden md:flex items-center space-x-8">
               <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                  ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                  : 'text-[#4A70A9] hover:text-[#8FABD4]'
               }`}>Features</a>
               <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                  ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                  : 'text-[#4A70A9] hover:text-[#8FABD4]'
               }`}>About</a>
               <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
-                  ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                  : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                  ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                  : 'text-[#4A70A9] hover:text-[#8FABD4]'
               }`}>Contact</a>
             </div>
             
@@ -174,20 +174,20 @@ const Dashboard = ({ setIsAuthenticated }) => {
                   <button
                     onClick={() => navigate('/profile')}
                     className={`flex items-center space-x-3 px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 ${
-                      isToggled ? 'bg-[#8B4513]/20 hover:bg-[#8B4513]/30' : 'bg-[#8B4513]/10 hover:bg-[#8B4513]/20'
+                      isToggled ? 'bg-[#4A70A9]/20 hover:bg-[#4A70A9]/30' : 'bg-[#8FABD4]/10 hover:bg-[#8FABD4]/20'
                     }`}
                   >
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-white ${
-                      isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
+                      isToggled ? 'bg-[#4A70A9]' : 'bg-[#8FABD4]'
                     }`}>
                       {user.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="hidden md:block">
                       <p className={`font-semibold text-sm ${
-                        isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+                        isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
                       }`}>{user.name}</p>
                       <p className={`text-xs ${
-                        isToggled ? 'text-[#D2B48C]/70' : 'text-[#5A5A5A]/70'
+                        isToggled ? 'text-[#8FABD4]/70' : 'text-[#4A70A9]/70'
                       }`}>{user.email}</p>
                     </div>
                   </button>
@@ -195,8 +195,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
                     onClick={handleLogout}
                     className={`text-white px-4 py-2 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
                       isToggled 
-                        ? 'bg-[#8B4513] hover:bg-[#8B4513]/90' 
-                        : 'bg-[#8B4513] hover:bg-[#8B4513]/90'
+                        ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90' 
+                        : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90'
                     }`}
                   >
                     Logout
@@ -213,17 +213,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className={`inline-flex items-center justify-center w-20 h-20 rounded-full mb-6 text-2xl font-bold text-white ${
-            isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
+            isToggled ? 'bg-[#4A70A9]' : 'bg-[#8FABD4]'
           }`}>
             {user?.name?.charAt(0).toUpperCase() || 'U'}
           </div>
           <h2 className={`text-3xl sm:text-4xl font-bold tracking-tight mb-4 transition-all duration-500 ${
-            isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+            isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
           }`}>
             {isNewUser ? 'Welcome' : 'Welcome back'}, {user?.name || 'Friend'}!
           </h2>
           <p className={`text-lg max-w-2xl mx-auto mb-8 transition-all duration-500 ${
-            isToggled ? 'text-[#D2B48C]/80' : 'text-[#5A5A5A]'
+            isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
           }`}>
             Ready to continue your wellness journey? Let's make today amazing!
           </p>
@@ -232,40 +232,40 @@ const Dashboard = ({ setIsAuthenticated }) => {
         {/* Quick Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
           }`}>
             <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
             }`}>7</div>
             <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
             }`}>Days Active</div>
           </div>
           <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
           }`}>
             <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
             }`}>12</div>
             <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
             }`}>Mood Entries</div>
           </div>
           <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/80'
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
           }`}>
             <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#F7A5A5]' : 'text-[#687FE5]'
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
             }`}>3</div>
             <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
             }`}>Goals Achieved</div>
           </div>
         </div>
 
         {/* Feature Cards */}
         <h3 className={`text-2xl font-bold mb-8 text-center ${
-          isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+          isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
         }`}>Your Wellness Tools</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
@@ -273,23 +273,23 @@ const Dashboard = ({ setIsAuthenticated }) => {
               key={index}
               className={`group p-6 rounded-2xl shadow-lg border hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
                 isToggled 
-                  ? 'bg-[#1A2A4F]/60 border-[#F7A5A5]/20' 
-                  : 'bg-white/90 border-gray-100'
+                  ? 'bg-[#000000]/60 border-[#8FABD4]/20' 
+                  : 'bg-white/90 border-[#8FABD4]/30'
               }`}
             >
               <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300 ${feature.color === '#687FE5' ? 'text-white' : 'text-gray-700'}`} style={{backgroundColor: feature.color}}>
                 {feature.icon}
               </div>
               <h3 className={`text-xl font-bold tracking-tight mb-3 ${
-                isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
               }`}>{feature.title}</h3>
               <p className={`text-sm leading-relaxed mb-4 ${
-                isToggled ? 'text-[#FFF2EF]/80' : 'text-gray-600'
+                isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
               }`}>{feature.description}</p>
               <button className={`text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
                 isToggled 
-                  ? 'bg-[#F7A5A5]/20 text-[#F7A5A5] hover:bg-[#F7A5A5]/30' 
-                  : 'bg-[#687FE5]/10 text-[#687FE5] hover:bg-[#687FE5]/20'
+                  ? 'bg-[#4A70A9]/20 text-[#8FABD4] hover:bg-[#4A70A9]/30' 
+                  : 'bg-[#8FABD4]/10 text-[#4A70A9] hover:bg-[#8FABD4]/20'
               }`}>
                 Open Tool
               </button>
@@ -299,17 +299,17 @@ const Dashboard = ({ setIsAuthenticated }) => {
 
         {/* Recent Activity */}
         <div className={`mt-12 p-6 rounded-2xl shadow-lg ${
-          isToggled ? 'bg-[#1A2A4F]/60' : 'bg-white/90'
+          isToggled ? 'bg-[#000000]/60' : 'bg-white/90'
         }`}>
           <h3 className={`text-xl font-bold mb-6 ${
-            isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+            isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
           }`}>Recent Activity</h3>
           <div className="space-y-4">
             <div className={`flex items-center p-4 rounded-lg ${
-              isToggled ? 'bg-[#F7A5A5]/10' : 'bg-[#687FE5]/5'
+              isToggled ? 'bg-[#4A70A9]/10' : 'bg-[#8FABD4]/10'
             }`}>
               <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
-                isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                isToggled ? 'bg-[#4A70A9]' : 'bg-[#8FABD4]'
               }`}>
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -317,18 +317,18 @@ const Dashboard = ({ setIsAuthenticated }) => {
               </div>
               <div>
                 <p className={`font-semibold ${
-                  isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                  isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
                 }`}>Mood logged: Happy</p>
                 <p className={`text-sm ${
-                  isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                  isToggled ? 'text-[#8FABD4]/70' : 'text-[#000000]/60'
                 }`}>2 hours ago</p>
               </div>
             </div>
             <div className={`flex items-center p-4 rounded-lg ${
-              isToggled ? 'bg-[#F7A5A5]/10' : 'bg-[#687FE5]/5'
+              isToggled ? 'bg-[#4A70A9]/10' : 'bg-[#8FABD4]/10'
             }`}>
               <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-4 ${
-                isToggled ? 'bg-[#F7A5A5]' : 'bg-[#687FE5]'
+                isToggled ? 'bg-[#4A70A9]' : 'bg-[#8FABD4]'
               }`}>
                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -336,10 +336,10 @@ const Dashboard = ({ setIsAuthenticated }) => {
               </div>
               <div>
                 <p className={`font-semibold ${
-                  isToggled ? 'text-[#FFF2EF]' : 'text-gray-900'
+                  isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
                 }`}>Completed 30min workout</p>
                 <p className={`text-sm ${
-                  isToggled ? 'text-[#FFF2EF]/70' : 'text-gray-500'
+                  isToggled ? 'text-[#8FABD4]/70' : 'text-[#000000]/60'
                 }`}>Yesterday</p>
               </div>
             </div>

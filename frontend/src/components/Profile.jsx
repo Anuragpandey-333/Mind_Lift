@@ -50,8 +50,8 @@ const Profile = () => {
   return (
     <div className={`min-h-screen transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
-        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
+        ? 'bg-[#000000]' 
+        : 'bg-[#EFECE3]'
     }`}>
       <div className="pt-20 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,7 +59,7 @@ const Profile = () => {
             <button
               onClick={() => navigate('/dashboard')}
               className={`flex items-center space-x-2 mb-4 transition-colors ${
-                isToggled ? 'text-[#CD853F] hover:text-[#8B4513]' : 'text-[#8B4513] hover:text-[#CD853F]'
+                isToggled ? 'text-[#8FABD4] hover:text-[#4A70A9]' : 'text-[#4A70A9] hover:text-[#8FABD4]'
               }`}
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -68,27 +68,27 @@ const Profile = () => {
               <span>Back to Dashboard</span>
             </button>
             <h1 className={`text-3xl font-bold ${
-              isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+              isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
             }`}>Profile Settings</h1>
           </div>
 
           <div className={`backdrop-blur-sm p-8 rounded-3xl shadow-2xl border ${
             isToggled 
-              ? 'bg-[#2A2A2A]/90 border-[#8B4513]/30' 
-              : 'bg-[#F5F5DC]/90 border-[#8B4513]/20'
+              ? 'bg-[#000000]/90 border-[#4A70A9]/30' 
+              : 'bg-white/90 border-[#8FABD4]/20'
           }`}>
             <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
               <div className={`w-24 h-24 rounded-full flex items-center justify-center text-2xl font-bold text-white ${
-                isToggled ? 'bg-[#8B4513]' : 'bg-[#8B4513]'
+                isToggled ? 'bg-[#4A70A9]' : 'bg-[#8FABD4]'
               }`}>
                 {formData.name.charAt(0).toUpperCase() || 'U'}
               </div>
               <div className="text-center sm:text-left">
                 <h2 className={`text-2xl font-bold ${
-                  isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+                  isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
                 }`}>{formData.name || 'User'}</h2>
                 <p className={`${
-                  isToggled ? 'text-[#D2B48C]/70' : 'text-[#5A5A5A]/70'
+                  isToggled ? 'text-[#8FABD4]/70' : 'text-[#000000]/70'
                 }`}>{formData.email}</p>
               </div>
               <div className="sm:ml-auto">
@@ -96,8 +96,8 @@ const Profile = () => {
                   onClick={() => setIsEditing(!isEditing)}
                   className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                     isToggled 
-                      ? 'bg-[#8B4513] hover:bg-[#8B4513]/90 text-white' 
-                      : 'bg-[#8B4513] hover:bg-[#8B4513]/90 text-white'
+                      ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90 text-white' 
+                      : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90 text-white'
                   }`}
                 >
                   {isEditing ? 'Cancel' : 'Edit Profile'}
@@ -108,15 +108,15 @@ const Profile = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label className={`block text-sm font-semibold ${
-                  isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+                  isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
                 }`}>Full Name</label>
                 <input
                   type="text"
                   disabled={!isEditing}
                   className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
                     isToggled 
-                      ? 'border-[#8B4513]/30 focus:ring-[#8B4513] bg-[#2A2A2A] text-[#D2B48C] placeholder-[#D2B48C]/60' 
-                      : 'border-[#8B4513]/30 focus:ring-[#8B4513] bg-[#DEB887]/30 text-[#5A5A5A] placeholder-[#5A5A5A]/70'
+                      ? 'border-[#4A70A9]/30 focus:ring-[#4A70A9] bg-[#000000] text-[#8FABD4] placeholder-[#8FABD4]/60' 
+                      : 'border-[#8FABD4]/30 focus:ring-[#8FABD4] bg-[#8FABD4]/10 text-[#000000] placeholder-[#000000]/70'
                   } ${!isEditing ? 'opacity-60' : ''}`}
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -202,8 +202,8 @@ const Profile = () => {
                   disabled={loading}
                   className={`px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                     isToggled 
-                      ? 'bg-[#8B4513] hover:bg-[#8B4513]/90 text-white' 
-                      : 'bg-[#8B4513] hover:bg-[#8B4513]/90 text-white'
+                      ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90 text-white' 
+                      : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90 text-white'
                   } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {loading ? 'Saving...' : 'Save Changes'}

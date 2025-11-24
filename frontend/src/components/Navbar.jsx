@@ -8,8 +8,8 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
   return (
     <nav className={`backdrop-blur-md shadow-lg border-b transition-all duration-500 fixed w-full top-0 z-50 ${
       isToggled 
-        ? 'bg-[#2A2A2A]/95 border-[#8B4513]/30' 
-        : 'bg-[#F5F5DC]/95 border-[#8B4513]/20'
+        ? 'bg-[#000000]/95 border-[#4A70A9]/30' 
+        : 'bg-[#EFECE3]/95 border-[#8FABD4]/20'
     }`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex justify-between items-center h-20">
@@ -18,8 +18,8 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
               onClick={toggleTheme}
               className={`flex items-center justify-center w-12 h-12 bg-gradient-to-br rounded-2xl shadow-lg transition-all duration-500 transform hover:scale-110 ${
                 isToggled 
-                  ? 'from-[#8B4513] to-[#CD853F] rotate-180' 
-                  : 'from-[#8B4513] to-[#CD853F] rotate-0'
+                  ? 'from-[#4A70A9] to-[#8FABD4] rotate-180' 
+                  : 'from-[#8FABD4] to-[#4A70A9] rotate-0'
               }`}
             >
               <svg className={`w-7 h-7 text-white transition-all duration-500 ${
@@ -30,26 +30,26 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
             </button>
             <h1 className={`text-2xl sm:text-3xl font-semibold bg-clip-text text-transparent tracking-wider transition-all duration-500 ${
               isToggled 
-                ? 'bg-gradient-to-r from-[#CD853F] via-[#8B4513] to-[#CD853F]' 
-                : 'bg-gradient-to-r from-[#8B4513] via-[#CD853F] to-[#8B4513]'
+                ? 'bg-gradient-to-r from-[#8FABD4] via-[#4A70A9] to-[#8FABD4]' 
+                : 'bg-gradient-to-r from-[#4A70A9] via-[#8FABD4] to-[#4A70A9]'
             }`}>MindLift</h1>
           </div>
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
               isToggled 
-                ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                : 'text-[#4A70A9] hover:text-[#8FABD4]'
             }`}>About</a>
             <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
               isToggled 
-                ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                : 'text-[#4A70A9] hover:text-[#8FABD4]'
             }`}>Features</a>
             <a href="#testimonials" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
               isToggled 
-                ? 'text-[#D2B48C] hover:text-[#CD853F]' 
-                : 'text-[#5A5A5A] hover:text-[#8B4513]'
+                ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
+                : 'text-[#4A70A9] hover:text-[#8FABD4]'
             }`}>Testimonials</a>
           </div>
           
@@ -72,8 +72,8 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
                 onClick={() => navigate('/dashboard')}
                 className={`text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ${
                   isToggled 
-                    ? 'bg-[#8B4513] hover:bg-[#8B4513]/90' 
-                    : 'bg-[#8B4513] hover:bg-[#8B4513]/90'
+                    ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90' 
+                    : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90'
                 }`}
               >
                 Dashboard
@@ -84,8 +84,8 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
                   onClick={() => navigate('/login')}
                   className={`font-semibold text-sm tracking-wide transition-all duration-300 px-4 py-2 rounded-full border ${
                     isToggled 
-                      ? 'text-[#D2B48C] hover:text-white border-[#8B4513] hover:bg-[#8B4513]' 
-                      : 'text-[#5A5A5A] hover:text-[#8B4513] hover:bg-[#DEB887]/50 border-transparent'
+                      ? 'text-[#8FABD4] hover:text-white border-[#4A70A9] hover:bg-[#4A70A9]' 
+                      : 'text-[#4A70A9] hover:text-[#8FABD4] hover:bg-[#8FABD4]/20 border-transparent'
                   }`}
                 >
                   Sign In
@@ -94,8 +94,8 @@ const Navbar = ({ isToggled, toggleTheme, isAuthenticated }) => {
                   onClick={() => navigate('/signup')}
                   className={`text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full font-semibold tracking-wide shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
                     isToggled 
-                      ? 'bg-[#8B4513] hover:bg-[#8B4513]/90' 
-                      : 'bg-[#8B4513] hover:bg-[#8B4513]/90'
+                      ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90' 
+                      : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90'
                   }`}
                 >
                   🚀 Start Learning

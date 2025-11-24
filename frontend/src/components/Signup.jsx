@@ -49,19 +49,19 @@ const Signup = ({ setIsAuthenticated }) => {
   return (
     <div className={`min-h-screen flex items-center justify-center p-4 transition-all duration-700 ${
       isToggled 
-        ? 'bg-gradient-to-br from-[#3A3A3A] via-[#4A4A4A] to-[#2A2A2A]' 
-        : 'bg-gradient-to-br from-[#F5F5DC] via-[#D2B48C] to-[#DEB887]'
+        ? 'bg-[#000000]' 
+        : 'bg-[#EFECE3]'
     }`}>
       <div className={`backdrop-blur-sm p-8 rounded-2xl shadow-2xl w-full max-w-md border transition-all duration-500 ${
         isToggled 
-          ? 'bg-[#2A2A2A]/90 border-[#8B4513]/30' 
-          : 'bg-[#F5F5DC]/90 border-[#8B4513]/20'
+          ? 'bg-[#000000]/90 border-[#4A70A9]/30' 
+          : 'bg-white/90 border-[#8FABD4]/20'
       }`}>
         <div className="text-center mb-8">
           <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 transition-all duration-500 ${
             isToggled 
-              ? 'bg-[#8B4513]' 
-              : 'bg-[#8B4513]'
+              ? 'bg-[#4A70A9]' 
+              : 'bg-[#8FABD4]'
           }`}>
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
@@ -69,26 +69,26 @@ const Signup = ({ setIsAuthenticated }) => {
           </div>
           <h1 className={`text-4xl font-bold tracking-tight bg-clip-text text-transparent mb-2 transition-all duration-500 ${
             isToggled 
-              ? 'bg-gradient-to-r from-[#CD853F] to-[#8B4513]' 
-              : 'bg-gradient-to-r from-[#8B4513] to-[#CD853F]'
+              ? 'bg-gradient-to-r from-[#8FABD4] to-[#4A70A9]' 
+              : 'bg-gradient-to-r from-[#4A70A9] to-[#8FABD4]'
           }`}>MindLift</h1>
           <p className={`font-medium tracking-wide transition-all duration-500 ${
-            isToggled ? 'text-[#D2B48C]' : 'text-[#5A5A5A]'
+            isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
           }`}>Start your wellness journey today</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
             <label className={`block text-sm font-semibold transition-all duration-300 ${
-              isToggled ? 'text-[#FFF2EF]' : 'text-gray-700'
+              isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
             }`}>Full Name</label>
             <input
               type="text"
               required
               className={`w-full px-4 py-3 border rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
                 isToggled 
-                  ? 'border-[#F7A5A5]/30 focus:ring-[#F7A5A5] bg-[#FFDBB6]/20 text-[#FFF2EF] placeholder-[#FFF2EF]/60' 
-                  : 'border-[#687FE5]/30 focus:ring-[#687FE5] bg-[#FEEBF6]/30 text-gray-900 placeholder-gray-500'
+                  ? 'border-[#4A70A9]/30 focus:ring-[#4A70A9] bg-[#4A70A9]/20 text-[#8FABD4] placeholder-[#8FABD4]/60' 
+                  : 'border-[#8FABD4]/30 focus:ring-[#8FABD4] bg-[#8FABD4]/10 text-[#000000] placeholder-[#000000]/70'
               }`}
               placeholder="Enter your full name"
               value={formData.name}
@@ -162,8 +162,8 @@ const Signup = ({ setIsAuthenticated }) => {
             disabled={loading}
             className={`w-full text-white py-3 px-4 rounded-xl font-semibold tracking-wide disabled:opacity-50 disabled:cursor-not-allowed transform transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] shadow-lg ${
               isToggled 
-                ? 'bg-[#F7A5A5] hover:bg-[#F7A5A5]/90' 
-                : 'bg-[#687FE5] hover:bg-[#687FE5]/90'
+                ? 'bg-[#4A70A9] hover:bg-[#4A70A9]/90' 
+                : 'bg-[#8FABD4] hover:bg-[#8FABD4]/90'
             }`}
           >
             {loading ? (
@@ -182,13 +182,13 @@ const Signup = ({ setIsAuthenticated }) => {
 
         <div className="mt-8 text-center">
           <p className={`font-medium tracking-wide transition-all duration-300 ${
-            isToggled ? 'text-[#FFF2EF]' : 'text-gray-600'
+            isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
           }`}>
             Already have an account?{' '}
             <Link to="/login" className={`font-semibold tracking-wide transition-colors ${
               isToggled 
-                ? 'text-[#FFDBB6] hover:text-[#FFDBB6]/80' 
-                : 'text-[#687FE5] hover:text-[#687FE5]/80'
+                ? 'text-[#4A70A9] hover:text-[#4A70A9]/80' 
+                : 'text-[#8FABD4] hover:text-[#8FABD4]/80'
             }`}>
               Sign in
             </Link>

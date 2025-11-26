@@ -41,7 +41,7 @@ const Landing = () => {
           {/* Background Image */}
           <div className="absolute inset-0 z-0">
             <img 
-              src="./landing.png" 
+              src="./landing1.png" 
               alt="Students studying and mental wellness" 
               className="w-full h-full object-cover"
             />
@@ -262,14 +262,14 @@ const Landing = () => {
             }`}>
               <div className="flex items-center mb-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108755-2616b612b786?q=80&w=150" 
+                  src="./Photo1.png" 
                   alt="Student testimonial" 
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
                   <h4 className={`font-bold ${
                     isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
-                  }`}>Sarah M.</h4>
+                  }`}>Mayank Yadav</h4>
                   <p className={`text-sm ${
                     isToggled ? 'text-[#8FABD4]/70' : 'text-[#000000]/60'
                   }`}>Psychology Major</p>
@@ -289,14 +289,14 @@ const Landing = () => {
             }`}>
               <div className="flex items-center mb-6">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150" 
+                  src="photo.png" 
                   alt="Student testimonial" 
                   className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
                   <h4 className={`font-bold ${
                     isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
-                  }`}>Alex K.</h4>
+                  }`}>Dhruv Kumar</h4>
                   <p className={`text-sm ${
                     isToggled ? 'text-[#8FABD4]/70' : 'text-[#000000]/60'
                   }`}>Engineering Student</p>

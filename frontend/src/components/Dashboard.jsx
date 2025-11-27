@@ -151,21 +151,21 @@ const Dashboard = ({ setIsAuthenticated }) => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
+              <button onClick={() => navigate('/features')} className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
                   : 'text-[#4A70A9] hover:text-[#8FABD4]'
-              }`}>Features</a>
-              <a href="#about" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
+              }`}>Features</button>
+              <button onClick={() => navigate('/about')} className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
                   : 'text-[#4A70A9] hover:text-[#8FABD4]'
-              }`}>About</a>
-              <a href="#contact" className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
+              }`}>About</button>
+              <button onClick={() => navigate('/contact')} className={`font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105 ${
                 isToggled 
                   ? 'text-[#8FABD4] hover:text-[#4A70A9]' 
                   : 'text-[#4A70A9] hover:text-[#8FABD4]'
-              }`}>Contact</a>
+              }`}>Contact</button>
             </div>
             
             <div className="flex items-center space-x-4">
@@ -229,72 +229,64 @@ const Dashboard = ({ setIsAuthenticated }) => {
           </p>
         </div>
 
-        {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
-          }`}>
-            <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
-            }`}>7</div>
-            <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
-            }`}>Days Active</div>
-          </div>
-          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
-          }`}>
-            <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
-            }`}>12</div>
-            <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
-            }`}>Mood Entries</div>
-          </div>
-          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
-            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
-          }`}>
-            <div className={`text-3xl font-bold mb-2 ${
-              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
-            }`}>3</div>
-            <div className={`text-sm font-medium ${
-              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
-            }`}>Goals Achieved</div>
-          </div>
-        </div>
-
         {/* Feature Cards */}
         <h3 className={`text-2xl font-bold mb-8 text-center ${
           isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
         }`}>Your Wellness Tools</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`group p-6 rounded-2xl shadow-lg border hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
-                isToggled 
-                  ? 'bg-[#000000]/60 border-[#8FABD4]/20' 
-                  : 'bg-white/90 border-[#8FABD4]/30'
-              }`}
-            >
-              <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300 ${feature.color === '#687FE5' ? 'text-white' : 'text-gray-700'}`} style={{backgroundColor: feature.color}}>
-                {feature.icon}
+          {features.map((feature, index) => {
+            const featureImages = {
+              'Mood Tracker': './photo3.png',
+              'Mentorship': './photo4.png',
+              'Fitness Tracker': './photo5.png',
+              'Diet Planner': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3',
+              'Scheduler': 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=400&auto=format&fit=crop&ixlib=rb-4.0.3',
+              'AI Chatbot': './photo6.png'
+            };
+            
+            return (
+              <div
+                key={index}
+                className={`group rounded-2xl shadow-xl border hover:shadow-2xl transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden ${
+                  isToggled 
+                    ? 'bg-[#000000]/60 border-[#8FABD4]/20' 
+                    : 'bg-white/90 border-[#8FABD4]/30'
+                }`}
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={featureImages[feature.title]} 
+                    alt={feature.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className={`absolute inset-0 ${
+                    isToggled 
+                      ? 'bg-gradient-to-t from-[#000000]/60 to-transparent' 
+                      : 'bg-gradient-to-t from-[#000000]/30 to-transparent'
+                  }`}></div>
+                  <div className={`absolute top-4 left-4 inline-flex items-center justify-center w-12 h-12 rounded-xl shadow-lg ${feature.color === '#687FE5' ? 'text-white' : 'text-gray-700'}`} style={{backgroundColor: feature.color}}>
+                    {feature.icon}
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  <h3 className={`text-xl font-bold tracking-tight mb-3 ${
+                    isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
+                  }`}>{feature.title}</h3>
+                  <p className={`text-sm leading-relaxed mb-4 ${
+                    isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
+                  }`}>{feature.description}</p>
+                  <button className={`w-full text-sm font-semibold px-4 py-3 rounded-lg transition-all duration-200 ${
+                    isToggled 
+                      ? 'bg-gradient-to-r from-[#4A70A9] to-[#8FABD4] text-white hover:shadow-lg' 
+                      : 'bg-gradient-to-r from-[#8FABD4] to-[#4A70A9] text-white hover:shadow-lg'
+                  }`}>
+                    Open Tool
+                  </button>
+                </div>
               </div>
-              <h3 className={`text-xl font-bold tracking-tight mb-3 ${
-                isToggled ? 'text-[#8FABD4]' : 'text-[#000000]'
-              }`}>{feature.title}</h3>
-              <p className={`text-sm leading-relaxed mb-4 ${
-                isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
-              }`}>{feature.description}</p>
-              <button className={`text-sm font-semibold px-4 py-2 rounded-lg transition-all duration-200 ${
-                isToggled 
-                  ? 'bg-[#4A70A9]/20 text-[#8FABD4] hover:bg-[#4A70A9]/30' 
-                  : 'bg-[#8FABD4]/10 text-[#4A70A9] hover:bg-[#8FABD4]/20'
-              }`}>
-                Open Tool
-              </button>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Recent Activity */}
@@ -343,6 +335,40 @@ const Dashboard = ({ setIsAuthenticated }) => {
                 }`}>Yesterday</p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
+            }`}>7</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
+            }`}>Days Active</div>
+          </div>
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
+            }`}>12</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
+            }`}>Mood Entries</div>
+          </div>
+          <div className={`p-6 rounded-2xl shadow-lg transition-all duration-300 ${
+            isToggled ? 'bg-[#000000]/60' : 'bg-white/80'
+          }`}>
+            <div className={`text-3xl font-bold mb-2 ${
+              isToggled ? 'text-[#8FABD4]' : 'text-[#4A70A9]'
+            }`}>3</div>
+            <div className={`text-sm font-medium ${
+              isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
+            }`}>Goals Achieved</div>
           </div>
         </div>
       </div>

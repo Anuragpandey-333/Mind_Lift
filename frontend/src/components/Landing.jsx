@@ -278,7 +278,7 @@ const Landing = () => {
               <p className={`text-lg leading-relaxed ${
                 isToggled ? 'text-[#8FABD4]/80' : 'text-[#000000]/80'
               }`}>
-                "MindLift helped me manage my anxiety during finals week. The mood tracking feature made me more aware of my mental state."
+                "MindLift helped me manage my anxiety during final exam week. The mood tracking feature made me more aware of my mental state."
               </p>
             </div>
 

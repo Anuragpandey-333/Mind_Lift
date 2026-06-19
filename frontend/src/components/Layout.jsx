@@ -28,7 +28,7 @@ const Layout = ({ setIsAuthenticated }) => {
   useEffect(() => {
     const stored = localStorage.getItem('user')
     if (stored) setUser(JSON.parse(stored))
-  }, [])
+  }, [location.pathname])
 
   const handleLogout = () => {
     localStorage.removeItem('token')

@@ -39,7 +39,9 @@ const NewLogin = ({ setIsAuthenticated }) => {
     } catch (err) {
       console.error('Login error:', err)
       if (err.code === 'ERR_NETWORK') {
-        setError('Cannot connect to server. Make sure backend is running on localhost:5001')
+        setError('Cannot connect to server. Make sure backend is running on port 5001.')
+      } else if (err.response?.status === 500) {
+        setError('Server error: database connection failed. Please try again later.')
       } else {
         setError(err.response?.data?.message || 'Login failed. Please check your credentials.')
       }

@@ -25,7 +25,7 @@ const GoogleCallback = ({ setIsAuthenticated }) => {
     } else {
       navigate('/login')
     }
-  }, [location, navigate, setIsAuthenticated])
+  }, [])
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#EFECE3]">
